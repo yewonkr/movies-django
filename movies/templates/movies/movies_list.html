@@ -1,0 +1,44 @@
+{% extends "movies/layout.html" %}
+
+{% block body %}
+
+    <h1>Movie List</h1>
+
+    <p style="color: rgb(0, 255, 0);">Total number of movies: {{ count }}</p>
+
+    <form action="{% url 'movies:movie_search' %}" method="get">
+        {% csrf_token %}
+        <label for="name">Search Actress: </label>
+        <input id="name" type="text" name="name" value="">
+        <input type="submit" value="submit">
+    </form>
+
+    <form action="{% url 'movies:movie_search' %}" method="get">
+        {% csrf_token %}
+        <label for="name">Search Movie: </label>
+        <input id="name" type="text" name="title" value="">
+        <input type="submit" value="submit">
+    </form>
+
+    <p>
+        <a href="http://192.168.1.59:8000/admin/movies/movies/add/">Add Movie</a>
+    </p>
+
+    <p>
+        <a href="{% url 'movies:actress_list'%}">Go to actress list page</a>
+    </p>
+
+    <ul>
+        {% for movie in movies %}
+            <li>
+                <a href="{% url 'movies:movie_detail' movie.id %}">
+                    {{ movie.id }}: {{ movie.title }}</a> ({{ movie.description }}) 
+            </li>
+        {% endfor %}
+    </ul>
+
+    
+    <a href="{% url 'movies:index'%}">Back to the Main Page</a>
+
+
+{% endblock %}

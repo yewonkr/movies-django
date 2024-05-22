@@ -1,0 +1,48 @@
+{% extends "movies/layout.html" %}
+
+{% block body %}
+
+    <h1>Actress List</h1>
+
+    <p style="color: rgb(0, 255, 0);">Total number of actresses: {{ count }}</p>
+
+    <form action="{% url 'movies:movie_search' %}" method="get">
+        {% csrf_token %}
+        <label for="name">Search Actress: </label>
+        <input id="name" type="text" name="name" value="">
+        <input type="submit" value="OK">
+    </form>
+
+    <form action="{% url 'movies:movie_search' %}" method="get">
+        {% csrf_token %}
+        <label for="name">Search Movie: </label>
+        <input id="name" type="text" name="title" value="">
+        <input type="submit" value="OK">
+    </form>
+
+    <p>
+        <a href="{% url 'movies:actress_list'%}">Add Actress</a>
+    </p>
+
+    <p>
+        <a href="{% url 'movies:movies_list'%}">Go to movies list page</a>
+    </p>
+
+    <ul>
+        {% for actress in actresses %}
+            <li>
+                <a href="{% url 'movies:actress_detail' actress.id %}" >
+                    {{ actress.id }}: {{ actress.name }} </a> ({{ actress.enName }}) {{ actress.birth }} {{ actress.height }} {{ actress.debut }}
+                
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'movies:index'%}">Back to the Main Page</a>
+    <p>
+        <form>
+            <input type="button" value="Go back!" onclick="history.back()">
+        </form>
+    </p>
+
+{% endblock %}

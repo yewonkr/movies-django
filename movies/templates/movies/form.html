@@ -1,0 +1,15 @@
+{% extends "movies/layout.html" %}
+
+{% block body %}
+
+<h2>Add Actress</h2>
+
+<form action = "{% url 'movies:actree_add' %}" method = "post"> 
+    {% csrf_token %} 
+    {{form_p}} 
+    <input type="submit" value="Submit"> 
+</form> 
+
+{% endblock %}
+
+

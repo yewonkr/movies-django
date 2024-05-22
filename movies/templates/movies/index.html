@@ -1,0 +1,14 @@
+{% extends "movies/layout.html" %}
+
+{% block body %}
+    <div id = "margin">
+    <h2>
+        <a href="{% url 'movies:movies_list' %}">Movies List</a><br>
+        <a href="{% url 'movies:actress_list' %}">Actress List</a><br>
+        <a href="{% url 'yewon:home' %}">Yewon</a>
+    </h2>
+    <!-- <p class = "padding">testing</p> -->
+    </div>
+{% endblock %}
+
+

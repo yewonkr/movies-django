@@ -1,0 +1,41 @@
+
+a:link {    color: rgb(88, 104, 158);  }
+a:visited {    color: rgb(175, 175, 67);  }
+a:hover {    color: rgb(153, 62, 115);  }
+a:active {    color: rgb(0, 255, 136);  }
+
+h1 {
+    color: rgb(96, 94, 240);
+    font-family: 'Lobster';
+    text-align: center;
+}
+
+body, div {
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-bottom: 50px;
+    margin-left: 50px;
+    background-color: rgba(82, 67, 51, 0.932)
+}
+
+
+/* id */
+#margin {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 80px;
+    padding-left: 80px;
+}
+
+/* class */
+.padding {
+    padding-top: 50px;
+    padding-right: 150px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+    color: #34addd;
+    background-color: rgb(5, 5, 5);
+    margin-right: 250px;
+    margin-bottom: 30px;
+}

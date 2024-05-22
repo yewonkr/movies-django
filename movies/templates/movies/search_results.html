@@ -1,0 +1,56 @@
+{% extends "movies/layout.html" %}
+
+{% block body %}
+    <div id = "margin">
+
+    <h2>Search Results</h2>
+
+    {% if actresses %}
+        
+    <ul>
+        {% for actress in actresses %}
+            <li>
+            <a href="{% url 'movies:actress_detail' actress.id %}" >{{ actress.id }} {{ actress.name }}</a> {{ actress.enName }} {{ actress.birth }}, {{ actress.height }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form>
+        <input type="button" value="Go back!" onclick="history.back()">
+    </form>
+
+    {% elif movies %}
+        
+    <ul>
+        {% for movie in movies %}
+            <ul>
+                <a href="{% url 'movies:movie_detail' movie.id %}">{{ movie.id }}: {{ movie.title }} </a>({{ movie.description }})
+        </ul>
+        {% endfor %}
+    </ul>
+
+    <form>
+        <input type="button" value="Go back!" onclick="history.back()">
+    </form>
+ 
+    {% else %}
+        <p style="color:red;">No data in actress.</p>
+
+        <p>
+            <a href="http://192.168.1.59:8000/admin/movies/actress/add/">Add Actress</a>
+        </p>
+
+        <p>
+            <a href="http://192.168.1.59:8000/admin/movies/movies/add/">Add Movie</a>
+        </p>
+
+        <form>
+            <input type="button" value="Go back!" onclick="history.back()">
+        </form>
+            
+    {% endif %}
+
+    <a href="{% url 'movies:index'%}">Back to the Main Page</a>
+
+    </div>
+{% endblock %}

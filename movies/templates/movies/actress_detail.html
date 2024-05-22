@@ -1,0 +1,47 @@
+{% extends "movies/layout.html" %}
+
+{% block body %}
+
+    <h1>Actress Detail</h1>
+
+    <div>
+        <dt>{{ actress.id }}: {{ actress.name }} ({{ actress.enName }}) {{ actress.birth }} {{ actress.height }} {{ actress.debut }}</dt>
+        <dt>{{ actress.info | linebreaks }}</dt>
+         
+        <a href="{% url 'movies:actress_delete' actress.id %}">Delete</a> | 
+        <a href="{% url 'movies:actress_list' %}">Edit</a>
+
+        <!-- {{ movies }} -->
+
+        <dl>
+          {% if movies %}
+              {% for movie in movies %}
+                <dt>{{ movie.id }}: <a href="{% url 'movies:movie_detail' movie.id %}"> {{ movie.title }} </a></dt><dt> {{ movie.description }}</dt>
+                <dt> {{ movie.info | linebreaks }}</dt>
+              {% endfor %}
+
+          {% else %}
+              <dt>No data in moives.</dt>
+          {% endif %}
+            
+        </dl>
+               
+        <form>
+          <input type="button" value="Go back!" onclick="history.back()">
+        </form>
+
+        <form>
+          <input type="button" value="No, really, go back!" onclick="history.go(-2)">
+         </form>
+
+        <p>
+            <a href="{% url 'movies:index'%}">Back to the Main Page</a>
+        </p>
+
+
+     
+  </div>
+  
+{% endblock %}
+
+
